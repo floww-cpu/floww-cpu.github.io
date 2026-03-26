@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flow — profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #080808;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .card-banner {
+      height: 6px;
+      background: linear-gradient(90deg, #c8ff00 0%, #7fff9e 50%, #c8ff00 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .card-body { padding: 28px 28px 24px; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 3px;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #c8ff00;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .avatar::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px;
+      width: 10px; height: 10px;
+      border-top: 2px solid #c8ff00;
+      border-left: 2px solid #c8ff00;
+    }
+
+    .avatar::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; right: -1px;
+      width: 10px; height: 10px;
+      border-bottom: 2px solid #c8ff00;
+      border-right: 2px solid #c8ff00;
+    }
+
+    .header-text { flex: 1; }
+
+    .tag-line {
+      font-size: 10px;
+      color: #444;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e8e8e8;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .name span { color: #c8ff00; }
+
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(200,255,0,0.07);
+      border: 1px solid rgba(200,255,0,0.2);
+      border-radius: 2px;
+      padding: 2px 8px;
+      font-size: 10px;
+      color: #c8ff00;
+      letter-spacing: 0.1em;
+    }
+
+    .rank-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #c8ff00;
+      animation: blink 1.6s ease infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.15; }
+    }
+
+    .divider {
+      height: 1px;
+      background: #1e1e1e;
+      margin-bottom: 20px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #1a1a1a;
+      border: 1px solid #1a1a1a;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      background: #0d0d0d;
+      padding: 12px 14px;
+    }
+
+    .stat-label {
+      font-size: 9px;
+      color: #3a3a3a;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #c8c8c8;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-value.accent { color: #c8ff00; }
+
+    .bio {
+      font-size: 11px;
+      color: #3d3d3d;
+      letter-spacing: 0.06em;
+      line-height: 1.9;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+
+    .bio span { color: #666; }
+
+    .links { display: flex; gap: 8px; }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid #222;
+      border-radius: 2px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: transparent;
+    }
+
+    .link-btn:hover {
+      border-color: #c8ff00;
+      color: #c8ff00;
+      background: rgba(200,255,0,0.04);
+    }
+
+    .link-btn svg {
+      width: 12px; height: 12px;
+      fill: currentColor;
+      opacity: 0.8;
+    }
+
+    .link-btn.primary { border-color: #c8ff00; color: #c8ff00; }
+
+    .now-playing {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
+      padding: 12px 28px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .now-playing:hover { background: #0f0f0f; }
+
+    .eq-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .bar {
+      width: 3px;
+      border-radius: 1px;
+      background: #c8ff00;
+      opacity: 0.5;
+      height: 4px;
+    }
+
+    .bar.playing { animation: eq 0.7s ease infinite alternate; }
+    .bar:nth-child(1) { animation-duration: 0.6s; }
+    .bar:nth-child(2) { animation-duration: 0.9s; }
+    .bar:nth-child(3) { animation-duration: 0.5s; }
+    .bar:nth-child(4) { animation-duration: 0.8s; }
+
+    @keyframes eq {
+      from { height: 3px; }
+      to { height: 14px; }
+    }
+
+    .song {
+      flex: 1;
+      font-size: 10px;
+      color: #333;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song span { color: #555; }
+
+    .play-icon {
+      font-size: 10px;
+      color: #2a2a2a;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-banner"></div>
+    <div class="card-body">
+
+      <div class="card-header">
+        <div class="avatar">F</div>
+        <div class="header-text">
+          <div class="tag-line">// player profile</div>
+          <div class="name">fl<span>ow</span></div>
+          <div class="rank-badge">
+            <div class="rank-dot"></div>
+            online
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-label">Location</div>
+          <div class="stat-value">Belgium</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Skin Colour</div>
+          <div class="stat-value accent">White</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Timezone</div>
+          <div class="stat-value">CET+1</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Local time</div>
+          <div class="stat-value accent" id="localtime">--:--:--</div>
+        </div>
+      </div>
+
+      <div class="bio">
+        <span>Software developer from Belgium —</span><br>
+        AI enthusiast & cloud infrastructure.
+      </div>
+
+      <div class="links">
+        <a href="https://github.com/" target="_blank" class="link-btn primary">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          github
+        </a>
+        <a href="#" class="link-btn">contact</a>
+      </div>
+    </div>
+
+    <div class="now-playing" onclick="togglePlay()">
+      <div class="eq-bars">
+        <div class="bar" id="b1"></div>
+        <div class="bar" id="b2"></div>
+        <div class="bar" id="b3"></div>
+        <div class="bar" id="b4"></div>
+      </div>
+      <div class="song"><span id="play-label">click to play —</span> <span id="song-name">your song here</span></div>
+      <div class="play-icon" id="play-icon">▶</div>
+      <audio id="audio" loop src="music.mp3"></audio>
+    </div>
+  </div>
+
+  <script>
+    function tick() {
+      const now = new Date();
+      const cet = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Brussels' }));
+      const h = String(cet.getHours()).padStart(2,'0');
+      const m = String(cet.getMinutes()).padStart(2,'0');
+      const s = String(cet.getSeconds()).padStart(2,'0');
+      document.getElementById('localtime').textContent = h + ':' + m + ':' + s;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    let playing = false;
+    const audio = document.getElementById('audio');
+    const bars = ['b1','b2','b3','b4'].map(id => document.getElementById(id));
+
+    function togglePlay() {
+      if (playing) {
+        audio.pause();
+        playing = false;
+        bars.forEach(b => b.classList.remove('playing'));
+        document.getElementById('play-icon').textContent = '▶';
+        document.getElementById('play-label').textContent = 'click to play —';
+      } else {
+        audio.play().then(() => {
+          playing = true;
+          bars.forEach(b => b.classList.add('playing'));
+          document.getElementById('play-icon').textContent = '❚❚';
+          document.getElementById('play-label').textContent = 'now playing —';
+        }).catch(() => {});
+      }
+    }
+  </script>
+
+</body>
+</html>
