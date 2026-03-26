@@ -285,7 +285,7 @@
       <div class="card-header">
         <div class="avatar">F</div>
         <div class="header-text">
-          <div class="tag-line">// player profile</div>
+          <div class="tag-line">player profile</div>
           <div class="name">fl<span>ow</span></div>
           <div class="rank-badge">
             <div class="rank-dot"></div>
@@ -336,9 +336,9 @@
         <div class="bar" id="b3"></div>
         <div class="bar" id="b4"></div>
       </div>
-      <div class="song"><span id="play-label">click to play —</span> <span id="song-name">your song here</span></div>
+      <div class="song"><span id="play-label">now playing</span></div>
       <div class="play-icon" id="play-icon">▶</div>
-      <audio id="audio" loop src="music.mp3"></audio>
+      <audio id="audio" loop autoplay src="music.mp3"></audio>
     </div>
   </div>
 
@@ -358,20 +358,21 @@
     const audio = document.getElementById('audio');
     const bars = ['b1','b2','b3','b4'].map(id => document.getElementById(id));
 
+    function setPlaying(state) {
+      playing = state;
+      bars.forEach(b => state ? b.classList.add('playing') : b.classList.remove('playing'));
+      document.getElementById('play-icon').textContent = state ? '❚❚' : '▶';
+      document.getElementById('play-label').textContent = state ? 'now playing' : 'paused';
+    }
+
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+
     function togglePlay() {
       if (playing) {
         audio.pause();
-        playing = false;
-        bars.forEach(b => b.classList.remove('playing'));
-        document.getElementById('play-icon').textContent = '▶';
-        document.getElementById('play-label').textContent = 'click to play —';
+        setPlaying(false);
       } else {
-        audio.play().then(() => {
-          playing = true;
-          bars.forEach(b => b.classList.add('playing'));
-          document.getElementById('play-icon').textContent = '❚❚';
-          document.getElementById('play-label').textContent = 'now playing —';
-        }).catch(() => {});
+        audio.play().then(() => setPlaying(true)).catch(() => {});
       }
     }
   </script>
