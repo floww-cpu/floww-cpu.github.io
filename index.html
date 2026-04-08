@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>flow · background</title>
+  <title>flow</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,7 +16,6 @@
       min-height: 100vh;
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
-      overflow-x: hidden;
     }
 
     .video-background {
@@ -26,7 +25,7 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      pointer-events: auto;
+      pointer-events: none;
     }
 
     #bg-video {
@@ -34,9 +33,8 @@
       height: 100%;
       object-fit: cover;
       filter: blur(12px);
-      transition: filter 0.4s ease;
+      transition: filter 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
       display: block;
-      pointer-events: auto;
     }
 
     #bg-video:hover {
@@ -50,44 +48,71 @@
       width: 100%;
       height: 100%;
       z-index: 100;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(2, 2, 2, 0.65);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: opacity 0.3s;
+      transition: opacity 0.4s ease, visibility 0.4s;
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
 
     .click-shield.hidden {
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
 
-    .shield-message {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2.8rem;
-      font-weight: 600;
-      color: #c8ff00;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      text-shadow: 0 0 20px rgba(200, 255, 0, 0.4);
-      background: rgba(10, 10, 10, 0.4);
-      padding: 0.8rem 2.5rem;
-      border: 1px solid rgba(200, 255, 0, 0.5);
-      border-radius: 40px;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      animation: pulseGlow 2.2s infinite;
+    .shield-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 5px #c8ff00; }
-      50% { box-shadow: 0 0 25px #c8ff00, 0 0 10px #7fff9e; }
-      100% { box-shadow: 0 0 5px #c8ff00; }
+    .prompt-icon {
+      width: 48px;
+      height: 48px;
+      border: 2px solid #c8ff00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(200, 255, 0, 0.03);
+      box-shadow: 0 0 18px rgba(200, 255, 0, 0.2);
+      animation: subtlePulse 2.2s infinite;
+    }
+
+    .prompt-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: #c8ff00;
+      margin-left: 3px;
+    }
+
+    .prompt-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #d0d0d0;
+      background: rgba(10, 10, 10, 0.3);
+      padding: 6px 18px;
+      border-left: 2px solid #c8ff00;
+      border-right: 2px solid #c8ff00;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    @keyframes subtlePulse {
+      0% { box-shadow: 0 0 8px #c8ff00; transform: scale(1); }
+      50% { box-shadow: 0 0 22px #7fff9e, 0 0 8px #c8ff00; transform: scale(1.02); }
+      100% { box-shadow: 0 0 8px #c8ff00; transform: scale(1); }
     }
 
     .card {
@@ -95,13 +120,13 @@
       z-index: 10;
       width: 100%;
       max-width: 400px;
-      background: rgba(13, 13, 13, 0.85);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(13, 13, 13, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid #2a2a2a;
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.8);
     }
 
     .card-banner {
@@ -219,7 +244,7 @@
 
     .divider {
       height: 1px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.05);
       margin-bottom: 20px;
     }
 
@@ -449,7 +474,6 @@
   </style>
 </head>
 <body>
-
   <div class="video-background">
     <video id="bg-video" loop preload="auto" playsinline>
       <source src="video.mp4" type="video/mp4">
@@ -457,13 +481,19 @@
   </div>
 
   <div class="click-shield" id="clickShield">
-    <div class="shield-message">▶ click anywhere</div>
+    <div class="shield-prompt">
+      <div class="prompt-icon">
+        <svg viewBox="0 0 24 24">
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+      </div>
+      <div class="prompt-text">initiate</div>
+    </div>
   </div>
 
   <div class="card">
     <div class="card-banner"></div>
     <div class="card-body">
-
       <div class="card-header">
         <div class="avatar">
           <img src="avatar.png" alt="flow" onerror="this.style.display='none';this.parentElement.textContent='F'">
@@ -477,9 +507,7 @@
           </div>
         </div>
       </div>
-
       <div class="divider"></div>
-
       <div class="stat-grid">
         <div class="stat">
           <div class="stat-label">Location</div>
@@ -498,12 +526,10 @@
           <div class="stat-value accent" id="localtime">--:--:--</div>
         </div>
       </div>
-
       <div class="bio">
         <span>Developer from Belgium</span><br>
         AI enthusiast & cloud infrastructure.
       </div>
-
       <div class="links">
         <a href="https://github.com/xehh0" target="_blank" class="link-btn primary">
           <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -512,7 +538,6 @@
         <button onclick="document.getElementById('overlay').classList.add('open')" class="link-btn">contact</button>
       </div>
     </div>
-
     <div class="now-playing" id="nowPlayingBar">
       <div class="eq-bars">
         <div class="bar" id="b1"></div>
@@ -544,8 +569,6 @@
 
   <script>
     (function() {
-      "use strict";
-
       function updateClock() {
         const now = new Date();
         const cet = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Brussels' }));
@@ -581,37 +604,28 @@
 
       function toggleVideoPlayback() {
         if (video.paused) {
+          video.muted = false;
           video.play().catch(e => {});
         } else {
           video.pause();
         }
       }
 
-      document.getElementById('nowPlayingBar').addEventListener('click', (e) => {
-        toggleVideoPlayback();
-      });
+      document.getElementById('nowPlayingBar').addEventListener('click', toggleVideoPlayback);
 
-      function activateVideoAndHideShield() {
-        if (!video.paused) return; 
-
+      function activateMedia() {
+        video.muted = false;
         video.play().then(() => {
           clickShield.classList.add('hidden');
           setPlayingState(true);
-        }).catch(err => {
+        }).catch(() => {
           clickShield.classList.add('hidden');
-          video.muted = false; 
+          video.muted = false;
           video.play().catch(() => {});
         });
       }
 
-      clickShield.addEventListener('click', activateVideoAndHideShield);
-
-      video.load();
-
-      if (!video.paused) {
-        clickShield.classList.add('hidden');
-        setPlayingState(true);
-      }
+      clickShield.addEventListener('click', activateMedia);
 
       video.addEventListener('play', () => {
         if (!clickShield.classList.contains('hidden')) {
@@ -619,16 +633,14 @@
         }
       });
 
-      if (video.paused) {
+      if (!video.paused) {
+        clickShield.classList.add('hidden');
+        setPlayingState(true);
+      } else {
         setPlayingState(false);
       }
 
-      video.loop = true;
-
-      video.addEventListener('error', () => {
-        console.warn('video.mp4 not found or unsupported — background remains static.');
-      });
-
+      video.load();
     })();
   </script>
 </body>
