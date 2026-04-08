@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>flow</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
@@ -15,118 +15,15 @@
       justify-content: center;
       min-height: 100vh;
       font-family: 'Share Tech Mono', monospace;
-      margin: 0;
-    }
-
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    #bg-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: blur(12px);
-      transition: filter 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
-      display: block;
-    }
-
-    #bg-video:hover {
-      filter: blur(0);
-    }
-
-    .click-shield {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 100;
-      background: rgba(2, 2, 2, 0.65);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: opacity 0.4s ease, visibility 0.4s;
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .click-shield.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .shield-prompt {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .prompt-icon {
-      width: 48px;
-      height: 48px;
-      border: 2px solid #c8ff00;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(200, 255, 0, 0.03);
-      box-shadow: 0 0 18px rgba(200, 255, 0, 0.2);
-      animation: subtlePulse 2.2s infinite;
-    }
-
-    .prompt-icon svg {
-      width: 24px;
-      height: 24px;
-      fill: #c8ff00;
-      margin-left: 3px;
-    }
-
-    .prompt-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: #d0d0d0;
-      background: rgba(10, 10, 10, 0.3);
-      padding: 6px 18px;
-      border-left: 2px solid #c8ff00;
-      border-right: 2px solid #c8ff00;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
-
-    @keyframes subtlePulse {
-      0% { box-shadow: 0 0 8px #c8ff00; transform: scale(1); }
-      50% { box-shadow: 0 0 22px #7fff9e, 0 0 8px #c8ff00; transform: scale(1.02); }
-      100% { box-shadow: 0 0 8px #c8ff00; transform: scale(1); }
     }
 
     .card {
-      position: relative;
-      z-index: 10;
       width: 100%;
       max-width: 400px;
-      background: rgba(13, 13, 13, 0.82);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: #0d0d0d;
       border: 1px solid #2a2a2a;
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 20px 35px rgba(0,0,0,0.8);
     }
 
     .card-banner {
@@ -165,15 +62,6 @@
       color: #c8ff00;
       position: relative;
       flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 2px;
-      display: block;
     }
 
     .avatar::before {
@@ -198,7 +86,7 @@
 
     .tag-line {
       font-size: 10px;
-      color: #aaa;
+      color: #444;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 4px;
@@ -244,7 +132,7 @@
 
     .divider {
       height: 1px;
-      background: rgba(255,255,255,0.05);
+      background: #1e1e1e;
       margin-bottom: 20px;
     }
 
@@ -260,13 +148,13 @@
     }
 
     .stat {
-      background: rgba(13, 13, 13, 0.9);
+      background: #0d0d0d;
       padding: 12px 14px;
     }
 
     .stat-label {
       font-size: 9px;
-      color: #7a7a7a;
+      color: #3a3a3a;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 4px;
@@ -284,14 +172,14 @@
 
     .bio {
       font-size: 11px;
-      color: #8a8a8a;
+      color: #3d3d3d;
       letter-spacing: 0.06em;
       line-height: 1.9;
       margin-bottom: 22px;
       text-transform: uppercase;
     }
 
-    .bio span { color: #aaa; }
+    .bio span { color: #666; }
 
     .links { display: flex; gap: 8px; }
 
@@ -300,13 +188,13 @@
       align-items: center;
       gap: 6px;
       padding: 7px 14px;
-      border: 1px solid #3a3a3a;
+      border: 1px solid #222;
       border-radius: 2px;
       font-family: 'Share Tech Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #aaa;
+      color: #555;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.15s;
@@ -331,15 +219,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(8, 8, 8, 0.7);
-      backdrop-filter: blur(4px);
-      border-top: 1px solid #2a2a2a;
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
       padding: 12px 28px;
       cursor: pointer;
       transition: background 0.15s;
     }
 
-    .now-playing:hover { background: rgba(20, 20, 20, 0.8); }
+    .now-playing:hover { background: #0f0f0f; }
 
     .eq-bars {
       display: flex;
@@ -371,7 +258,7 @@
     .song {
       flex: 1;
       font-size: 10px;
-      color: #888;
+      color: #333;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       white-space: nowrap;
@@ -379,21 +266,147 @@
       text-overflow: ellipsis;
     }
 
-    .song span { color: #bbb; }
+    .song span { color: #555; }
 
     .play-icon {
       font-size: 10px;
-      color: #c8ff00;
+      color: #2a2a2a;
       flex-shrink: 0;
       letter-spacing: 0.05em;
     }
+  </style>
+</head>
+<body>
 
+  <div class="card">
+    <div class="card-banner"></div>
+    <div class="card-body">
+
+      <div class="card-header">
+        <div class="avatar"><img src="avatar.png" alt="flow" onerror="this.style.display='none';this.parentElement.textContent='F'"></div>
+        <div class="header-text">
+          <div class="tag-line">player profile</div>
+          <div class="name">fl<span>ow</span></div>
+          <div class="rank-badge">
+            <div class="rank-dot"></div>
+            online
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-label">Location</div>
+          <div class="stat-value">Belgium</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Skin Colour</div>
+          <div class="stat-value accent">White</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Timezone</div>
+          <div class="stat-value">CET+1</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Local time</div>
+          <div class="stat-value accent" id="localtime">--:--:--</div>
+        </div>
+      </div>
+
+      <div class="bio">
+        <span>Developer from Belgium</span><br>
+        AI enthusiast & cloud infrastructure.
+      </div>
+
+      <div class="links">
+        <a href="https://github.com/xehh0" target="_blank" class="link-btn primary">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          github
+        </a>
+        <button onclick="document.getElementById('overlay').classList.add('open')" class="link-btn">contact</button>
+      </div>
+    </div>
+
+    <div class="now-playing" onclick="togglePlay()">
+      <div class="eq-bars">
+        <div class="bar" id="b1"></div>
+        <div class="bar" id="b2"></div>
+        <div class="bar" id="b3"></div>
+        <div class="bar" id="b4"></div>
+      </div>
+      <div class="song"><span id="play-label">now playing</span></div>
+      <div class="play-icon" id="play-icon">▶</div>
+      <audio id="audio" loop autoplay src="music.mp3"></audio>
+    </div>
+  </div>
+
+  <script>
+    function tick() {
+      const now = new Date();
+      const cet = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Brussels' }));
+      const h = String(cet.getHours()).padStart(2,'0');
+      const m = String(cet.getMinutes()).padStart(2,'0');
+      const s = String(cet.getSeconds()).padStart(2,'0');
+      document.getElementById('localtime').textContent = h + ':' + m + ':' + s;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    let playing = false;
+    const audio = document.getElementById('audio');
+    const bars = ['b1','b2','b3','b4'].map(id => document.getElementById(id));
+
+    function setPlaying(state) {
+      playing = state;
+      bars.forEach(b => state ? b.classList.add('playing') : b.classList.remove('playing'));
+      document.getElementById('play-icon').textContent = state ? '❚❚' : '▶';
+      document.getElementById('play-label').textContent = state ? 'now playing' : 'paused';
+    }
+
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+
+    function togglePlay() {
+      if (playing) {
+        audio.pause();
+        setPlaying(false);
+      } else {
+        audio.play().then(() => setPlaying(true)).catch(() => {});
+      }
+    }
+  </script>
+
+  <div class="overlay" id="overlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="popup">
+      <div class="popup-banner"></div>
+      <div class="popup-label">contact</div>
+      <div class="popup-discord">
+        <div class="discord-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        </div>
+        <div class="discord-info">
+          <div class="discord-name">flowlyte.</div>
+          <div class="discord-sub">discord username</div>
+        </div>
+      </div>
+      <button class="popup-close" onclick="document.getElementById('overlay').classList.remove('open')">close</button>
+    </div>
+  </div>
+
+  <style>
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+    }
     .overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.75);
       align-items: center;
       justify-content: center;
       z-index: 999;
@@ -416,7 +429,7 @@
     }
     .popup-label {
       font-size: 9px;
-      color: #aaa;
+      color: #3a3a3a;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 14px;
@@ -452,7 +465,7 @@
     }
     .discord-sub {
       font-size: 9px;
-      color: #7a7a7a;
+      color: #3a3a3a;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
@@ -460,188 +473,18 @@
       width: 100%;
       padding: 8px;
       background: transparent;
-      border: 1px solid #333;
+      border: 1px solid #222;
       border-radius: 2px;
       font-family: 'Share Tech Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #aaa;
+      color: #444;
       cursor: pointer;
       transition: all 0.15s;
     }
-    .popup-close:hover { border-color: #888; color: #ddd; }
+    .popup-close:hover { border-color: #444; color: #666; }
   </style>
-</head>
-<body>
-  <div class="video-background">
-    <video id="bg-video" loop preload="auto" playsinline>
-      <source src="video.mp4" type="video/mp4">
-    </video>
-  </div>
 
-  <div class="click-shield" id="clickShield">
-    <div class="shield-prompt">
-      <div class="prompt-icon">
-        <svg viewBox="0 0 24 24">
-          <polygon points="5,3 19,12 5,21" />
-        </svg>
-      </div>
-      <div class="prompt-text">initiate</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-banner"></div>
-    <div class="card-body">
-      <div class="card-header">
-        <div class="avatar">
-          <img src="avatar.png" alt="flow" onerror="this.style.display='none';this.parentElement.textContent='F'">
-        </div>
-        <div class="header-text">
-          <div class="tag-line">player profile</div>
-          <div class="name">fl<span>ow</span></div>
-          <div class="rank-badge">
-            <div class="rank-dot"></div>
-            online
-          </div>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="stat-grid">
-        <div class="stat">
-          <div class="stat-label">Location</div>
-          <div class="stat-value">Belgium</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Skin Colour</div>
-          <div class="stat-value accent">White</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Timezone</div>
-          <div class="stat-value">CET+1</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Local time</div>
-          <div class="stat-value accent" id="localtime">--:--:--</div>
-        </div>
-      </div>
-      <div class="bio">
-        <span>Developer from Belgium</span><br>
-        AI enthusiast & cloud infrastructure.
-      </div>
-      <div class="links">
-        <a href="https://github.com/xehh0" target="_blank" class="link-btn primary">
-          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          github
-        </a>
-        <button onclick="document.getElementById('overlay').classList.add('open')" class="link-btn">contact</button>
-      </div>
-    </div>
-    <div class="now-playing" id="nowPlayingBar">
-      <div class="eq-bars">
-        <div class="bar" id="b1"></div>
-        <div class="bar" id="b2"></div>
-        <div class="bar" id="b3"></div>
-        <div class="bar" id="b4"></div>
-      </div>
-      <div class="song"><span id="play-label">paused</span></div>
-      <div class="play-icon" id="play-icon">▶</div>
-    </div>
-  </div>
-
-  <div class="overlay" id="overlay" onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="popup">
-      <div class="popup-banner"></div>
-      <div class="popup-label">contact</div>
-      <div class="popup-discord">
-        <div class="discord-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-        </div>
-        <div class="discord-info">
-          <div class="discord-name">flowlyte.</div>
-          <div class="discord-sub">discord username</div>
-        </div>
-      </div>
-      <button class="popup-close" onclick="document.getElementById('overlay').classList.remove('open')">close</button>
-    </div>
-  </div>
-
-  <script>
-    (function() {
-      function updateClock() {
-        const now = new Date();
-        const cet = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Brussels' }));
-        const h = String(cet.getHours()).padStart(2,'0');
-        const m = String(cet.getMinutes()).padStart(2,'0');
-        const s = String(cet.getSeconds()).padStart(2,'0');
-        document.getElementById('localtime').textContent = h + ':' + m + ':' + s;
-      }
-      updateClock();
-      setInterval(updateClock, 1000);
-
-      const video = document.getElementById('bg-video');
-      const clickShield = document.getElementById('clickShield');
-      const playLabel = document.getElementById('play-label');
-      const playIcon = document.getElementById('play-icon');
-      const bars = ['b1','b2','b3','b4'].map(id => document.getElementById(id));
-
-      function setPlayingState(isPlaying) {
-        if (isPlaying) {
-          bars.forEach(b => b.classList.add('playing'));
-          playIcon.textContent = '❚❚';
-          playLabel.textContent = 'now playing';
-        } else {
-          bars.forEach(b => b.classList.remove('playing'));
-          playIcon.textContent = '▶';
-          playLabel.textContent = 'paused';
-        }
-      }
-
-      video.addEventListener('play', () => setPlayingState(true));
-      video.addEventListener('pause', () => setPlayingState(false));
-      video.addEventListener('ended', () => setPlayingState(false));
-
-      function toggleVideoPlayback() {
-        if (video.paused) {
-          video.muted = false;
-          video.play().catch(e => {});
-        } else {
-          video.pause();
-        }
-      }
-
-      document.getElementById('nowPlayingBar').addEventListener('click', toggleVideoPlayback);
-
-      function activateMedia() {
-        video.muted = false;
-        video.play().then(() => {
-          clickShield.classList.add('hidden');
-          setPlayingState(true);
-        }).catch(() => {
-          clickShield.classList.add('hidden');
-          video.muted = false;
-          video.play().catch(() => {});
-        });
-      }
-
-      clickShield.addEventListener('click', activateMedia);
-
-      video.addEventListener('play', () => {
-        if (!clickShield.classList.contains('hidden')) {
-          clickShield.classList.add('hidden');
-        }
-      });
-
-      if (!video.paused) {
-        clickShield.classList.add('hidden');
-        setPlayingState(true);
-      } else {
-        setPlayingState(false);
-      }
-
-      video.load();
-    })();
-  </script>
 </body>
 </html>
