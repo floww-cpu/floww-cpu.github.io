@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#18181b">
+<meta name="description" content="Flow — student developer based in Belgium.">
+<title>Flow</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="window" aria-label="Flow portfolio">
+<aside class="explorer" aria-label="Portfolio navigation">
+<p class="explorer-title">Explorer</p>
+<div class="folder">
+<svg aria-hidden="true" viewBox="0 0 16 16"><path d="M1.5 3.25A1.25 1.25 0 0 1 2.75 2h3.1c.35 0 .68.15.92.4l.95 1.1h5.53A1.75 1.75 0 0 1 15 5.25v6A1.75 1.75 0 0 1 13.25 13h-10A1.75 1.75 0 0 1 1.5 11.25v-8Z" fill="currentColor"></path></svg>
+Flow
+</div>
+<nav class="file-list">
+<button class="file" data-page="home" aria-selected="true" type="button"><span class="file-icon">&lt;&gt;</span>index.html</button>
+<button class="file" data-page="projects" aria-selected="false" type="button"><span class="file-icon">{ }</span>projects.json</button>
+<button class="file" data-page="gallery" aria-selected="false" type="button"><span class="file-icon">▧</span>gallery.json</button>
+</nav>
+</aside>
+<section class="editor">
+<div class="tabbar" aria-hidden="true">
+<div class="tab"><span class="tab-dot"></span><span id="tab-name">index.html</span></div>
+</div>
+<div class="content">
+<article class="page is-active" data-content="home">
+<div class="intro">
+<div class="avatar"><img alt="Flow pfp" src="https://i.pinimg.com/736x/10/e9/14/10e914ff9c8cf99e84ee522a5724b16a.jpg"></div>
+<div>
+<h1>Flow</h1>
+<a class="meta-link" href="https://flowlyte.xyz" rel="noreferrer" target="_blank">flowlyte.xyz ↗</a>
+</div>
+</div>
+<div class="home-grid">
+<section class="about-card" aria-labelledby="about-home-title">
+<h2 id="about-home-title">About me</h2>
+<p class="about-copy">Student dev from Europe I develop websites, LuaU/CfxLua Scripts, discord bots, other small projects</p>
+<p class="about-copy">Python, LuaU, Html, Css, js, batch</p>
+</section>
+<section aria-label="Profile">
+<div class="code-window">
+<div class="code-head"><span class="code-file"><span class="py-badge">PY</span> profile.py</span></div>
+<div class="code-body">
+<div class="code-row"><span class="line-number">1</span><span class="code-text"><span class="token-keyword">from</span> datetime <span class="token-keyword">import</span> datetime</span></div>
+<div class="code-row"><span class="line-number">2</span><span class="code-text"><span class="token-keyword">from</span> zoneinfo <span class="token-keyword">import</span> ZoneInfo</span></div>
+<div class="code-row"><span class="line-number">3</span><span class="code-text"></span></div>
+<div class="code-row"><span class="line-number">4</span><span class="code-text"><span class="token-name">now</span> = datetime.now(ZoneInfo(<span class="token-string">"Europe/Brussels"</span>))</span></div>
+<div class="code-row"><span class="line-number">5</span><span class="code-text"></span></div>
+<div class="code-row"><span class="line-number">6</span><span class="code-text"><span class="token-name">flow</span> = {</span></div>
+<div class="code-row"><span class="line-number">7</span><span class="code-text">  <span class="token-string">"location"</span>: <span class="token-string">"Belgium"</span>,</span></div>
+<div class="code-row"><span class="line-number">8</span><span class="code-text">  <span class="token-string">"timezone"</span>: <span class="token-string">"Europe/Brussels"</span>,</span></div>
+<div class="code-row"><span class="line-number">9</span><span class="code-text">  <span class="token-string">"local_time"</span>: <span class="token-string">"<span class="belgium-time">--:--:--</span>"</span>,</span></div>
+<div class="code-row"><span class="line-number">10</span><span class="code-text">  <span class="token-string">"date"</span>: <span class="token-string">"<span class="belgium-date">loading</span>"</span></span></div>
+<div class="code-row"><span class="line-number">11</span><span class="code-text">}</span></div>
+</div>
+</div>
+</section>
+</div>
+<section class="favorite-games" aria-labelledby="favorite-games-title">
+<div class="favorite-games-head"><div><h2 id="favorite-games-title">Favorite games</h2><p id="favorite-game-count">Loading games...</p></div><div class="carousel-controls"><button class="icon-button" id="previous-game" type="button" aria-label="Previous game" title="Previous game">&larr;</button><button class="icon-button" id="next-game" type="button" aria-label="Next game" title="Next game">&rarr;</button></div></div>
+<div class="game-carousel" id="game-carousel"><p class="loading-text">Loading games...</p></div>
+</section>
+</article>
+<article class="page" data-content="projects">
+<h2 class="section-title">Projects</h2>
+<div class="project-list" id="project-list"><p class="loading-text">Loading projects…</p></div>
+</article>
+<article class="page" data-content="gallery">
+<div class="gallery-heading"><div><h2 class="section-title">Photo albums</h2><p class="gallery-subtitle" id="gallery-subtitle"></p></div></div>
+<div class="album-grid" id="album-grid"></div>
+<section class="album-detail" id="album-detail" hidden><div class="album-toolbar"><button class="icon-button" id="back-to-albums" type="button" aria-label="Back to albums" title="Back to albums">&larr;</button><div><h3 id="album-title">Album</h3><p id="album-description"></p></div></div>
+<h2 class="section-title">Gallery</h2>
+<div class="gallery-grid" id="gallery-grid"><p class="loading-text">Loading gallery…</p></div>
+</article>
+</div>
+<div class="statusbar">
+<span id="status-left">rrrr</span>
+<span>UTF-8 · LF</span>
+</div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

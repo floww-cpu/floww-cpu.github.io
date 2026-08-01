@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Minecraft",
+    "platform": "Java Edition",
+    "description": "Building worlds and playing with friends.",
+    "image": "assets/images/minecraftlogo.png"
+  },
+  {
+    "title": "Sons of the Forest",
+    "platform": "Steam",
+    "description": "Survive the horrors of the forest and uncover its secrets.",
+    "image": "assets/images/sonslogo.jpg"
+  },
+  {
+    "title": "Backrooms: Escape Together",
+    "platform": "Steam",
+    "description": "Explore endless liminal spaces, survive terrifying entities, and escape the Backrooms together",
+    "image": "assets/images/betlogo.png"
+  },
+  {
+    "title": "Satisfactory",
+    "platform": "Steam",
+    "description": "Build massive factories, explore an alien world, and automate everything.",
+    "image": "assets/images/satlogo.png"
+  },
+  {
+    "title": "Phasmophobia",
+    "platform": "Steam",
+    "description": "Investigate haunted locations and identify dangerous ghosts with friends.",
+    "image": "assets/images/phasmologo.jpg"
+  }
+]

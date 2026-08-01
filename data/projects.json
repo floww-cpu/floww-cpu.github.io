@@ -1,0 +1,26 @@
+[
+    {
+    "title": "Atherius",
+    "description": "Developed a small part of this",
+    "technology": "Vite",
+    "thumbnail": "assets/atherius.svg",
+    "link": "https://atherius.pro/",
+    "period": "2025-2026"
+  },
+  {
+    "title": "The Stand Society",
+    "description": "Roblox Alt control script",
+    "technology": "Lua",
+    "thumbnail": "assets/stand.svg",
+    "link": "https://discord.gg/QgVTzNtCcx",
+    "period": "2025-now"
+  },
+  {
+    "title": "FlowWare",
+    "description": "a Roblox Scripthub for many games",
+    "technology": "Lua",
+    "thumbnail": "assets/flowware.svg",
+    "link": "http://flowware.xyz/",
+    "period": "2024-2025"
+  }
+]

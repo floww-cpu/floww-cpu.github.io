@@ -1,0 +1,98 @@
+{
+  "albums": [
+    {
+      "id": "dsi",
+      "title": "DSI",
+      "description": "Weekly DSI",
+      "photos": [
+        {
+          "title": "Weekly DSI",
+          "description": "Flow, Hummel, Exotic",
+          "image": "assets/images/dsi.png"
+        },
+        {
+          "title": "Roleplay met exotic",
+          "description": "Flow, Exotic gaan naar een winkel ov",
+          "image": "assets/images/dsi2.png"
+        },
+        {
+          "title": "Eerste dag DSI",
+          "description": "moest ff all me geld weg doen bij het casino met spaz",
+          "image": "assets/images/dsi3.png"
+        },
+        {
+          "title": "DSI opendeurdag",
+          "description": "radicale roleplay",
+          "image": "assets/images/dsi4.png"
+        }
+      ]
+    },
+    {
+      "id": "minecraft",
+      "title": "Minecraft",
+      "description": "Minecraft",
+      "photos": [
+        {
+          "title": "-1 enderdragon",
+          "description": "-1",
+          "image": "assets/images/minecraft.png"
+        },
+        {
+          "title": "Flow vondt dit mooi",
+          "description": "Flow vondt dit mooi",
+          "image": "assets/images/minecraft2.png"
+        },
+        {
+          "title": "Spaz",
+          "description": "dit was Spaz",
+          "image": "assets/images/minecraft3.png"
+        },
+        {
+          "title": "Tim",
+          "description": "dit was TicoTim",
+          "image": "assets/images/minecraft4.png"
+        },
+        {
+          "title": "whiter",
+          "description": "met Joep en Tim de wither verslaan 😎",
+          "image": "assets/images/minecraft5.png"
+        },
+        {
+          "title": "Strider",
+          "description": "dit was een Strider",
+          "image": "assets/images/minecraft6.png"
+        },
+        {
+          "title": "Flow zijn base",
+          "description": "dit was Flow zijn base",
+          "image": "assets/images/minecraft7.png"
+        }
+      ]
+    },
+    {
+      "id": "Kmar",
+      "title": "Kmar Weekly",
+      "description": "dit waren pas tijden",
+      "photos": [
+        {
+          "title": "Spaz gooit een backflip",
+          "description": "Spaz de Roleplayer",
+          "type": "video",
+          "video": "assets/images/kmar.mp4"
+        },
+        {
+          "title": "Flow zijn doods ervaring",
+          "description": "Flow Werdt bijna ge VDMt door zijn eigen motor met squeaker tim en spaz",
+          "type": "video",
+          "video": "assets/images/kmar2.mp4"
+        },
+        {
+          "title": "Flow en Spaz",
+          "description": "wat zijn deze graphics",
+          "image": "assets/images/kmar.png"
+        }
+
+      ]
+    }
+  ]
+}
