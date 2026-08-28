@@ -1,5 +1,13 @@
 [
     {
+    "title": "Rift",
+    "description": "Rift is a Cloud Discord selfbot",
+    "technology": "PY",
+    "thumbnail": "assets/rift-logo.svg",
+    "link": "https://rift.flowlyte.xyz/",
+    "period": "2026-now"
+  },
+    {
     "title": "Atherius",
     "description": "Developed a small part of this",
     "technology": "Vite",
